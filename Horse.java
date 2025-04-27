@@ -3,7 +3,7 @@
  * Write a description of class Horse here.
  * 
  * Mohammad Yusuf Miah	
- * @1.0
+ * @1.3
  */
 public class Horse
 {
