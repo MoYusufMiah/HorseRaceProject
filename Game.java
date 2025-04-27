@@ -1,15 +1,24 @@
 import java.util.Scanner;
 class Game{
 	public static void main(String[] args) {
-	Scanner myObj = new Scanner(System.in);
-	 Race race = new Race(7);
-	System.out.println("Enter horsenames");
-	 Horse horse = new Horse('h',myObj.nextLine(),0.5);
-	 Horse horse1 = new Horse('e',myObj.nextLine(),0.5);
-	 Horse horse2 = new Horse('f',myObj.nextLine(),0.5);
-	 race.addHorse(horse,1);
-	 race.addHorse(horse2,2);
-	 race.addHorse(horse1,3);
-	 race.startRace();
+		String choice = "";
+		String winner = "";
+		Scanner scanner = new Scanner(System.in);
+		Race race = new Race(10);
+		while (!(choice.equals("Leon") || choice.equals("Humphrey") || choice.equals("Greg"))){
+			System.out.println("pick a horse |Leon|Humphrey|Greg");
+			choice = scanner.nextLine();
+		}
+		Horse horse = new Horse('L',"Leon",0.5);
+		Horse horse1 = new Horse('H',"Humphrey",0.5);
+		Horse horse2 = new Horse('G',"Greg",0.5);
+		race.addHorse(horse,1);
+		race.addHorse(horse2,2);
+		race.addHorse(horse1,3);
+		winner = race.startRace();
+		System.out.println("the winner is "+winner);
+		if (choice.equals(winner)){
+			System.out.println("You Won!");
+		}
 	}
 }

@@ -62,10 +62,11 @@ public class Race
      * then repeatedly moved forward until the 
      * race is finished
      */
-    public void startRace()
+    public String startRace()
     {
         //declare a local variable to tell us when the race is finished
         boolean finished = false;
+	String winner ="";
         
         //reset all the lanes (all horses not fallen and back to 0). 
         lane1Horse.goBackToStart();
@@ -83,17 +84,31 @@ public class Race
             printRace();
             
             //if any of the three horses has won the race is finished
-            if ( raceWonBy(lane1Horse) || raceWonBy(lane2Horse) || raceWonBy(lane3Horse) )
+            if ( raceWonBy(lane1Horse))
             {
                 finished = true;
+		winner = lane1Horse.getName();
+		
             }
+	    else if ( raceWonBy(lane2Horse))
+            {
+                finished = true;
+		winner = lane2Horse.getName();
+	    }
+	    else if ( raceWonBy(lane3Horse))
+	    {
+		finished = true;
+		winner = lane3Horse.getName();
+	    }
            
             //wait for 100 milliseconds
             try{ 
                 TimeUnit.MILLISECONDS.sleep(100);
             }catch(Exception e){}
         }
-    }
+	return winner;
+}
+
     
     /**
      * Randomly make a horse move forward or fall depending
