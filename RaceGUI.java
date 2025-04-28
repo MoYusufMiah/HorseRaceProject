@@ -2,10 +2,13 @@ import javax.swing.*;
 import java.awt.*;
 
 class GUI {
-     static Horse horse = new Horse('L',"Leon",0.5);
-     static Horse horse1 = new Horse('H',"Humphrey",0.5);
-     static Horse horse2 = new Horse('G',"Greg",0.5);
-     public static void Title() {
+       public static Horse horse = new Horse('L',"Leon",0.8,8);
+       public static Horse horse1 = new Horse('H',"Humphrey",0.7,10);
+       public static Horse horse2 = new Horse('G',"Greg",0.75,9);
+
+
+
+    public static void Title() {
          JFrame frame = new JFrame("HorseRace");
          frame.setVisible(true);
          frame.setSize(601, 601);
@@ -13,6 +16,7 @@ class GUI {
          frame.setTitle("HorseRace");
          frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
          frame.getContentPane().setBackground(new Color(111, 111, 255));
+         frame.setLayout(null);
 
          JLabel label = new JLabel("HorseRace");
          label.setHorizontalAlignment(SwingConstants.CENTER);
@@ -22,6 +26,15 @@ class GUI {
          label.setText("pick a horse");
          label.setFont(label.getFont().deriveFont(16.0f));
          label.setBounds(0, 200, 600, 200);
+
+         JLabel label1 = new JLabel("HorseRace");
+         label1.setHorizontalAlignment(SwingConstants.CENTER);
+         label1.setVerticalTextPosition(JLabel.CENTER);
+         label1.setForeground(Color.white);
+         frame.getContentPane().add(label1);
+         label1.setText("Cash:"+Cash.showCash());
+         label1.setFont(label1.getFont().deriveFont(16.0f));
+         label1.setBounds(0, 130, 600, 200);
 
          JPanel panel1 = new JPanel();
          panel1.setBackground(new Color(0, 111, 255));
@@ -88,7 +101,7 @@ class GUI {
          label_1.setBounds(0, -50, 200, 200);
 
          JLabel label_11 = new JLabel("Horse");
-         label_11.setText("Confidence: "+horse1.getConfidence());
+         label_11.setText("Confidence: "+horse1.getConfidence()+" earning: "+horse1.getWorth());
          label_11.setForeground(Color.white);
          panel5.add(label_11);
          label_11.setBounds(0, -30, 200, 200);
@@ -100,7 +113,7 @@ class GUI {
         label_2.setBounds(0, -50, 200, 200);
 
          JLabel label_21 = new JLabel("Horse");
-         label_21.setText("Confidence: "+horse1.getConfidence());
+         label_21.setText("Confidence: "+horse2.getConfidence()+" earning: "+horse2.getWorth());
          label_21.setForeground(Color.white);
          panel6.add(label_21);
          label_21.setBounds(0, -30, 200, 200);
@@ -112,7 +125,7 @@ class GUI {
         label_3.setBounds(0, -50, 200, 200);
 
          JLabel label_31 = new JLabel("Horse");
-         label_31.setText("Confidence: "+horse1.getConfidence());
+         label_31.setText("Confidence: "+horse.getConfidence()+" earning: "+horse.getWorth());
          label_31.setForeground(Color.white);
          panel7.add(label_31);
          label_31.setBounds(0, -30, 200, 200);
@@ -120,27 +133,26 @@ class GUI {
          JButton button = new JButton("Humphrey");
          button.setBounds(0, 0, 200, 200);
          button.addActionListener(e -> RunGame.selectedHorse("Humphrey"));
-         button.addActionListener(e -> GUI.Gameplay());
+         button.addActionListener(e -> MainGame.Gameplay());
          button.addActionListener(e -> frame.dispose());
-         button.addActionListener(e -> panel1.setBackground(new Color(0, 111, 255)));
+
          button.setFocusable(Boolean.FALSE);
          panel1.add(button);
 
          JButton button2 = new JButton("Greg");
          button2.setBounds(0, 0, 200, 200);
          button2.addActionListener(e -> RunGame.selectedHorse("Greg"));
-         button2.addActionListener(e -> GUI.Gameplay());
+         button2.addActionListener(e -> MainGame.Gameplay());
          button2.addActionListener(e -> frame.dispose());
-         button.addActionListener(e -> panel2.setBackground(new Color(111, 0, 255)));
+
          button2.setFocusable(Boolean.FALSE);
          panel2.add(button2);
 
          JButton button3 = new JButton("Leon");
          button3.setBounds(0, 0, 200, 200);
          button3.addActionListener(e -> RunGame.selectedHorse("Leon"));
-         button3.addActionListener(e -> GUI.Gameplay());
+         button3.addActionListener(e -> MainGame.Gameplay());
          button3.addActionListener(e -> frame.dispose());
-         button.addActionListener(e ->  panel3.setBackground(new Color(0, 0, 255)));
          button3.setFocusable(Boolean.FALSE);
          panel3.add(button3);
 
@@ -148,13 +160,5 @@ class GUI {
      public static void horseChosen(String horse) {
          JOptionPane.showMessageDialog(null, horse +" Chosen");
      }
-     public static void Gameplay() {
-         JFrame frame = new JFrame("Race");
-         frame.setVisible(true);
-         frame.setSize(601, 601);
-         frame.setResizable(false);
-         frame.setTitle("Race");
-         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-         frame.getContentPane().setBackground(new Color(111, 111, 255));
-     }
+
  }
