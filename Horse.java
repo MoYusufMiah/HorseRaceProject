@@ -3,7 +3,7 @@
  * Write a description of class Horse here.
  * 
  * Mohammad Yusuf Miah	
- * @1.0
+ * @1.3
  */
 public class Horse
 {
@@ -13,27 +13,31 @@ public class Horse
     private int distance;
     private boolean fallen;
     private double confidence;
+    private int worth;
     
       
     //Constructor of class Horse
     /**
      * Constructor for objects of class Horse
      */
-    public Horse(char horseSymbol, String horseName, double horseConfidence)
+    public Horse(char horseSymbol, String horseName, double horseConfidence, int horseWorth)
     {
        symbol=horseSymbol;
        name=horseName;
        confidence=horseConfidence;
+       worth= horseWorth;
     }
-    
-    
-    
+
+    public int getWorth() {
+        return worth;
+    }
+
     //Other methods of class Horse
     public void fall()
     {
         fallen=true;
     }
-    
+
     public double getConfidence()
     {
         return confidence;
@@ -57,6 +61,7 @@ public class Horse
     public void goBackToStart()
     {
         distance=0;
+        fallen=false;
     }
     
     public boolean hasFallen()
